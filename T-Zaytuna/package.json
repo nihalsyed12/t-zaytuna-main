@@ -1,0 +1,22 @@
+{
+  "name": "t-zaytuna",
+  "version": "1.0.0",
+  "description": "Hussains Portfolio",
+  "type": "module",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx http-server . -p 3000 -c-1"
+  },
+  "keywords": [],
+  "author": "Nihal Syed",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "gsap": "^3.13.0",
+    "split-type": "^0.3.4"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
