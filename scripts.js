@@ -5,6 +5,8 @@
 // import items from './items.js';
 
 // Define items array directly in this file
+console.log('Scripts.js loaded');
+
 const items = [
     "@hsyn._art.jpg",
     "@hsyn._art (1).jpg",
@@ -60,8 +62,21 @@ const titles = [
     "Artwork Twenty-Three"
 ];
 
-gsap.registerPlugin(CustomEase);
-CustomEase.create("hop", "0.9, 0, 0.1, 1");
+console.log('GSAP available:', typeof gsap !== 'undefined');
+if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(CustomEase);
+    CustomEase.create("hop", "0.9, 0, 0.1, 1");
+    console.log('GSAP plugins registered');
+} else {
+    console.error('GSAP is not loaded!');
+}
+
+console.log('DOM elements found:', {
+    container: !!document.querySelector('.container'),
+    canvas: !!document.querySelector('.canvas'),
+    overlay: !!document.querySelector('.overlay'),
+    title: !!document.querySelector('.nav-title')
+});
 
 const container = document.querySelector('.container');
 const canvas = document.querySelector('.canvas');
@@ -197,6 +212,7 @@ function updateVisibleItems() {
            const img = document.createElement('img');
            img.src = `public/${items[itemNum - 1]}`;
            img.alt = `Image ${itemNum}`;
+           console.log('Creating image:', img.src);
            item.appendChild(img);
 
            item.addEventListener('click', () => {

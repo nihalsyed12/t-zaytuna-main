@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+        .test-box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .status {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px;
+            background: #333;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+    <!-- GSAP Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-/TzG3aSu7mpBkf0ofu3X5q1zI5a0zXWzddFDnpuy1D1+kO45UMILq8Ol8fkG8u60THekX+Q7Wu+9ib7gveQuU/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- GSAP CustomEase Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/CustomEase.min.js" integrity="sha512-/TzG3aSu7mpBkf0ofu3X5q1zI5a0zXWzddFDnpuy1D1+kO45UMILq8Ol8fkG8u60THekX+Q7Wu+9ib7gveQuU/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="status" id="status">Testing GSAP...</div>
+    <div class="test-box" id="testBox"></div>
+
+    <script>
+        window.addEventListener('load', function() {
+            const status = document.getElementById('status');
+            const testBox = document.getElementById('testBox');
+            
+            if (typeof gsap === 'undefined') {
+                status.textContent = '❌ GSAP failed to load';
+                status.style.background = '#ff4444';
+            } else {
+                status.textContent = '✅ GSAP loaded successfully';
+                status.style.background = '#44ff44';
+                
+                // Test GSAP animation
+                gsap.to(testBox, {
+                    rotation: 360,
+                    scale: 1.2,
+                    duration: 2,
+                    ease: "power2.inOut",
+                    repeat: -1,
+                    yoyo: true
+                });
+                
+                // Test CustomEase
+                if (typeof CustomEase !== 'undefined') {
+                    CustomEase.create("hop", "0.9, 0, 0.1, 1");
+                    console.log('CustomEase plugin loaded successfully');
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

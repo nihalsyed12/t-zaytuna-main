@@ -12,10 +12,7 @@
   "author": "Nihal Syed",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0",
-    "firebase": "^11.10.0",
-    "gsap": "^3.13.0",
-    "split-type": "^0.3.4"
+    "express": "^5.1.0"
   },
   "devDependencies": {
     "http-server": "^14.1.1"

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: 10px;
+            border: 2px solid #333;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>Image Loading Test</h1>
+    
+    <div id="status"></div>
+    
+    <h2>Test Images:</h2>
+    <img src="public/@hsyn._art.jpg" alt="Test 1" class="test-image" onload="imageLoaded(this)" onerror="imageError(this)">
+    <img src="public/@hsyn._art (1).jpg" alt="Test 2" class="test-image" onload="imageLoaded(this)" onerror="imageError(this)">
+    <img src="public/@hsyn._art (2).jpg" alt="Test 3" class="test-image" onload="imageLoaded(this)" onerror="imageError(this)">
+    
+    <h2>JavaScript Test:</h2>
+    <div id="js-test"></div>
+
+    <script>
+        console.log('Test page loaded');
+        
+        const status = document.getElementById('status');
+        const jsTest = document.getElementById('js-test');
+        
+        // Test JavaScript functionality
+        jsTest.innerHTML = '<div class="status success">✅ JavaScript is working</div>';
+        
+        let loadedCount = 0;
+        let errorCount = 0;
+        
+        function imageLoaded(img) {
+            loadedCount++;
+            console.log('Image loaded:', img.src);
+            updateStatus();
+        }
+        
+        function imageError(img) {
+            errorCount++;
+            console.error('Image failed to load:', img.src);
+            updateStatus();
+        }
+        
+        function updateStatus() {
+            const total = 3;
+            if (loadedCount + errorCount === total) {
+                if (errorCount === 0) {
+                    status.innerHTML = `<div class="status success">✅ All ${loadedCount} images loaded successfully</div>`;
+                } else {
+                    status.innerHTML = `<div class="status error">❌ ${errorCount} images failed to load, ${loadedCount} loaded successfully</div>`;
+                }
+            }
+        }
+        
+        // Test if GSAP is available
+        setTimeout(() => {
+            if (typeof gsap !== 'undefined') {
+                jsTest.innerHTML += '<div class="status success">✅ GSAP is loaded</div>';
+            } else {
+                jsTest.innerHTML += '<div class="status error">❌ GSAP is not loaded</div>';
+            }
+        }, 1000);
+    </script>
+</body>
+</html> 
