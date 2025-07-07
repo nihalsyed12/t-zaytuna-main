@@ -306,18 +306,17 @@ img {
     
     .donation-buttons {
         gap: 0.75rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
+        display: flex;
+        flex-direction: row;
         max-width: 400px;
-        justify-items: center;
+        justify-content: center;
     }
     
     .donation-btn {
         padding: 14px 20px;
         font-size: 13px;
-        width: 100%;
-        max-width: 180px;
+        width: auto;
+        min-width: 140px;
     }
 }
 
@@ -328,18 +327,17 @@ img {
     
     .donation-buttons {
         gap: 0.5rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
+        display: flex;
+        flex-direction: row;
         max-width: 300px;
-        justify-items: center;
+        justify-content: center;
     }
     
     .donation-btn {
         padding: 12px 16px;
         font-size: 12px;
-        width: 100%;
-        max-width: 140px;
+        width: auto;
+        min-width: 120px;
     }
 }
 
@@ -351,12 +349,16 @@ img {
     .donation-buttons {
         gap: 0.4rem;
         max-width: 260px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
     
     .donation-btn {
         padding: 10px 14px;
         font-size: 11px;
-        max-width: 120px;
+        width: auto;
+        min-width: 100px;
     }
 }
 

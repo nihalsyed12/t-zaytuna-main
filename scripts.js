@@ -291,17 +291,11 @@ function expandItem(itemId) {
     donationContainer.className = 'donation-container';
     donationContainer.innerHTML = `
         <div class="donation-buttons">
-            <button class="donation-btn primary" onclick="window.open('https://donate.example.com', '_blank')">
+            <button class="donation-btn primary" onclick="window.open('https://www.chuffed.org/project/110881-help-issam-evacuate-from-gaza-and-pursue-his-engineering-dreams', '_blank')">
                 Donate Now
             </button>
-            <button class="donation-btn secondary" onclick="window.open('https://prints.example.com', '_blank')">
-                Buy Prints
-            </button>
-            <button class="donation-btn secondary" onclick="window.open('https://shirts.example.com', '_blank')">
-                Buy as Shirt
-            </button>
-            <button class="donation-btn secondary" onclick="window.open('https://totes.example.com', '_blank')">
-                Buy as Tote Bag
+            <button class="donation-btn secondary" onclick="window.open('https://shop.example.com', '_blank')">
+                Check Out Shop
             </button>
         </div>
     `;
