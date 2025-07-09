@@ -492,6 +492,9 @@ container.addEventListener('touchstart', (e) => {
     mouseHasMoved = false;
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
+    
+    // Prevent default to avoid scrolling while dragging
+    e.preventDefault();
 });
 
 window.addEventListener('touchmove', (e) => {
@@ -500,7 +503,9 @@ window.addEventListener('touchmove', (e) => {
     const dx = e.touches[0].clientX - startX;
     const dy = e.touches[0].clientY - startY;
 
-    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+    // More sensitive touch detection for smaller screens
+    const sensitivity = window.innerWidth < 768 ? 2 : 5;
+    if (Math.abs(dx) > sensitivity || Math.abs(dy) > sensitivity) {
         mouseHasMoved = true;
     }
 
@@ -509,10 +514,20 @@ window.addEventListener('touchmove', (e) => {
 
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
+    
+    // Prevent default to avoid scrolling while dragging
+    e.preventDefault();
 });
 
-window.addEventListener('touchend', () => {
+window.addEventListener('touchend', (e) => {
     isDragging = false;
+    
+    // Add momentum for touch devices
+    if (canDrag && mouseHasMoved) {
+        const momentumFactor = window.innerWidth < 768 ? 150 : 200;
+        targetX += dragVelocityX * momentumFactor;
+        targetY += dragVelocityY * momentumFactor;
+    }
 });
 
 window.addEventListener('resize', () => {
